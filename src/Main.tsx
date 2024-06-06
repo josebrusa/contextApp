@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { BottomTabsNavigator } from './presentation/navigator/BottomTabsNavigator';
 
 export const Main = () => {
     return (
-        <View>
-            <Text>Hola Mundo</Text>
-        </View>
-    )
-};
+        <NavigationContainer>
+            <BottomTabsNavigator />
+        </NavigationContainer>
+    );
+}
