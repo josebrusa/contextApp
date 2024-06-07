@@ -1,10 +1,35 @@
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { styles } from "../../../config";
+import { useProfileStore } from "../../store/profile-store";
 
 export const ProfileScreen = () => {
+
+    const name = useProfileStore(state => state.name)
+    const email = useProfileStore(state => state.email)
+    const changeProfile = useProfileStore(state => state.changeProfile)
     return (
         <View style={styles.container}>
-            <Text>Profile Screen</Text>
+            <Text style={styles.title}>{name}</Text>
+            <Text style={styles.title}>{email}</Text>
+
+            <Pressable
+                style={styles.primaryButton}
+                onPress={() => useProfileStore.setState({ name: 'jose' })}
+            >
+                <Text>Cambiar nombre</Text>
+            </Pressable>
+            <Pressable
+                style={styles.primaryButton}
+                onPress={() => useProfileStore.setState({ email: 'jose@google.com' })}
+            >
+                <Text>Cambiar email</Text>
+            </Pressable>
+            <Pressable
+                style={styles.primaryButton}
+                onPress={() => changeProfile('john Doe', 'john.doe@google.com')}
+            >
+                <Text>Regresar a Jonh</Text>
+            </Pressable>
         </View>
     );
 };
